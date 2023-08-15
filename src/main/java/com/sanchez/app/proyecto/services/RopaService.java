@@ -1,7 +1,8 @@
 package com.sanchez.app.proyecto.services;
 
 import com.sanchez.app.proyecto.interfaces.IRepository;
-import com.sanchez.app.proyecto.interfaces.RopaRepository;
+import com.sanchez.app.proyecto.interfaces.IService;
+import com.sanchez.app.proyecto.repositories.RopaRepository;
 import com.sanchez.app.proyecto.models.Ropa;
 
 import java.sql.Connection;
@@ -9,7 +10,7 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
-public class RopaService implements IService<Ropa>{
+public class RopaService implements IService<Ropa> {
 
     private IRepository<Ropa> ropaIRepository;
 
@@ -19,7 +20,7 @@ public class RopaService implements IService<Ropa>{
     }
 
     @Override
-    public List<Ropa> listarRopa() {
+    public List<Ropa> listar() {
 
         try {
 
@@ -34,7 +35,7 @@ public class RopaService implements IService<Ropa>{
     }
 
     @Override
-    public Optional<Ropa> getByIdRopa(Long id) {
+    public Optional<Ropa> getBy(Long id) {
 
         try {
             return Optional.ofNullable(ropaIRepository.getBy(id));
@@ -47,7 +48,7 @@ public class RopaService implements IService<Ropa>{
     }
 
     @Override
-    public void guardarRopa(Ropa ropa) {
+    public void guardar(Ropa ropa) {
 
         try {
 
@@ -62,7 +63,7 @@ public class RopaService implements IService<Ropa>{
     }
 
     @Override
-    public void eliminarRopa(Long id) {
+    public void eliminar(Long id) {
 
         try {
 

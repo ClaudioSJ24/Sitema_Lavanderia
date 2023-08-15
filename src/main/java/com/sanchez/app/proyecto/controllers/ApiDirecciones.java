@@ -1,8 +1,8 @@
 package com.sanchez.app.proyecto.controllers;
 
-import com.sanchez.app.proyecto.models.Ropa;
 import com.sanchez.app.proyecto.interfaces.IService;
-import com.sanchez.app.proyecto.services.RopaService;
+import com.sanchez.app.proyecto.models.Direccion;
+import com.sanchez.app.proyecto.services.DireccionesService;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -13,20 +13,19 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.util.List;
 
-@WebServlet("/ropa/listar")
-public class RopaServlet extends HttpServlet {
+@WebServlet("/direcciones/api")
+public class ApiDirecciones extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         Connection conexion = (Connection) req.getAttribute("conexion");
-        IService<Ropa> ropaIService = new RopaService(conexion);
-        List<Ropa> ropa = ropaIService.listar();
+        IService<Direccion> direccionIService = new DireccionesService(conexion);
+        List<Direccion> direcciones = direccionIService.listar();
 
-        for (int i = 0; i < ropa.size(); i++) {
+        for (int i = 0; i < direcciones.size(); i++) {
 
-            resp.getWriter().println("<h1>"+ ropa.get(i).getIdRopa()+" -> " +
-                    ropa.get(i).getTotalPagar()+" -> "+ ropa.get(i).getPesoTotal()+"</h1>");
+            resp.getWriter().println("<h1>"+direcciones.get(i).getCiudad()+" --> "+direcciones.get(i).getColonia()+"-->"+direcciones.get(i).getEstado()+"</h1>");
 
         }
 

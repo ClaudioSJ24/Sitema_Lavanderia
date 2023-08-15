@@ -1,12 +1,13 @@
-package com.sanchez.app.proyecto.interfaces;
+package com.sanchez.app.proyecto.repositories;
 
+import com.sanchez.app.proyecto.interfaces.IRepository;
 import com.sanchez.app.proyecto.models.Ropa;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RopaRepository implements IRepository<Ropa>{
+public class RopaRepository implements IRepository<Ropa> {
     private Connection conexion;
 
     public RopaRepository(Connection conexion) {
