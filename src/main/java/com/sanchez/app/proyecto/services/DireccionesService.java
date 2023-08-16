@@ -30,6 +30,7 @@ public class DireccionesService implements IDireccionesService {
         }catch (SQLException e){
 
             throw  new RuntimeException(e.getMessage(), e.getCause());
+
         }
 
     }
