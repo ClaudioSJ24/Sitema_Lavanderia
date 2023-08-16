@@ -21,7 +21,7 @@ public class DireccionesRepository implements IDireccionesRepository {
         String query = "";
         Long result = -1L;
 
-        query = "insert into direcciones (ID_DIRECION, calle, numero, colonia, " +
+        query = "insert into direccionest (ID_DIRECION, calle, numero, colonia, " +
                 "cuidad, estado, cp)" +
                 "values (SEQUENCE3.NEXTVAL,?,?,?,?,?,?)";
 
