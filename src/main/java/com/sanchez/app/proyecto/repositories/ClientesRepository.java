@@ -123,13 +123,11 @@ public class ClientesRepository implements IClientesRepository {
 
         if (cliente.getIdCliente() != null && cliente.getIdCliente() > 0) {
 
-            query = "update clientesl set ropa_id=?, nombre=?, telefono=? " +
-                    "where id_cliente=?";
+            query = "update clientesl set ropa_id=?, nombre=?, telefono=? where id_cliente=?";
 
         }else {
 
-            query = "insert into clientel (id_cliente, ropa_id, nombre, telefono)" +
-                    "values(SEQUENCECLIENTE.NEXTVAL,?,?,?)";
+            query = "insert into clientesl (id_cliente, ropa_id, nombre, telefono) values(SEQUENCECLIENTE.NEXTVAL,?,?,?)";
         }try(PreparedStatement preparedStatement = conexion.prepareStatement(query)) {
 
             if (cliente.getIdCliente() != null  && cliente.getIdCliente() > 0) {
