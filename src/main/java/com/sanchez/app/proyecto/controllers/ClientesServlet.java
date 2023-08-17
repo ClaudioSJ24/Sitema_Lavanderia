@@ -25,10 +25,19 @@ public class ClientesServlet extends HttpServlet {
         IService<Cliente> clienteIService = new ClientesService(conexion);
         List<Cliente> clientes = clienteIService.listar();
 
-        for (int i = 0; i < clientes.size(); i++) {
+        /**
+         *
+         * for (int i = 0; i < clientes.size(); i++) {
+         *
+         *             resp.getWriter().println("<h1>"+clientes.get(i).getNombre()+"-->"+clientes.get(i).getTelefono()+"</h1>");
+         *
+         *  }
+         *
+         */
 
-            resp.getWriter().println("<h1>"+clientes.get(i).getNombre()+"-->"+clientes.get(i).getTelefono()+"</h1>");
+        req.setAttribute("clientes", clientes);
+        getServletContext().getRequestDispatcher("/listaClientes.jsp").forward(req,resp);
 
-        }
+
     }
 }

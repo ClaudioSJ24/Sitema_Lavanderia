@@ -25,7 +25,7 @@
 </head>
 <body>
 
-    <nav class="navbar navbar-inverse">
+ <nav class="navbar navbar-inverse">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header" id="div1">
@@ -36,7 +36,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                                    <a class="navbar-brand" href="#" id="enlace1">Rutas App</a>
+                                    <a class="navbar-brand" href="#" id="enlace1">Lavanderia App</a>
             </div>
 
 
@@ -56,25 +56,35 @@
 
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                            aria-haspopup="true" aria-expanded="false">Camiones<span
+                            aria-haspopup="true" aria-expanded="false">Clientes<span
                                 class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="<%=request.getContextPath()%>/camiones/listar">Lista Camiones</a></li>
-                            <li><a href="<%=request.getContextPath()%>/camiones/alta">Alta Camion</a></li>
+                            <li><a href="<%=request.getContextPath()%>/clientes/listar">Lista Clientes</a></li>
+                            <li><a href="<%=request.getContextPath()%>/clientes/alta">Alta Cliente</a></li>
 
                         </ul>
                     </li>
 
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                            aria-haspopup="true" aria-expanded="false">Rutas<span
+                            aria-haspopup="true" aria-expanded="false">Trabajadores<span
                                 class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="<%=request.getContextPath()%>/rutas/alta">Alta Ruta</a></li>
+                            <li><a href="<%=request.getContextPath()%>/trabajadores/listar">Lista trabajadores</a></li>
+                            <li><a href="<%=request.getContextPath()%>/trabajadores/alta">Alta Trabajadores</a></li>
 
                         </ul>
                     </li>
+                    <li class="dropdown">
+                       <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                          aria-haspopup="true" aria-expanded="false">Registros<span
+                           class="caret"></span></a>
+                       <ul class="dropdown-menu">
+                            <li><a href="<%=request.getContextPath()%>/registros/listar"> Lista Registros</a></li>
+                            <li><a href="<%=request.getContextPath()%>/registros/alta">Alta Registro</a></li>
 
+                       </ul>
+                    </li>
 
                 </ul>
             </div><!-- /.navbar-collapse -->

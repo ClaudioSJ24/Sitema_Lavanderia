@@ -25,11 +25,20 @@ public class TrabajadoresServlet extends HttpServlet {
         IService<Trabajador> trabajadorIService = new TrabajadoresService(conexion);
         List<Trabajador> trabajadores = trabajadorIService.listar();
 
-        for (int i = 0; i < trabajadores.size(); i++) {
+        /**
+         *
+         * for (int i = 0; i < trabajadores.size(); i++) {
+         *
+         *             resp.getWriter().println("<h1>"+ trabajadores.get(i).getNombre()+"-->"+trabajadores.get(i).getApellidoP()+"-->"+trabajadores.get(i).getApellidoM()+"</h1>");
+         *
+         *         }
+         *
+         */
 
-            resp.getWriter().println("<h1>"+ trabajadores.get(i).getNombre()+"-->"+trabajadores.get(i).getApellidoP()+"-->"+trabajadores.get(i).getApellidoM()+"</h1>");
+        req.setAttribute("trabajadores", trabajadores);
+        getServletContext().getRequestDispatcher("/listaTrabajadores.jsp").forward(req,resp);
 
-        }
+
 
 
     }

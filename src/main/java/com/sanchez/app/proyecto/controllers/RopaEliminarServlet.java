@@ -38,7 +38,7 @@ public class RopaEliminarServlet extends HttpServlet {
             } else {
 
                 resp.sendError(HttpServletResponse.SC_NOT_FOUND,
-                        "nO EXISTE EL CHOFER EN LA BASE DE DATOS");
+                        "NO EXISTE EL ID EN LA BASE DE DATOS");
             }
         }else
 
