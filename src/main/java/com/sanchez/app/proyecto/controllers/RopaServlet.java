@@ -23,12 +23,17 @@ public class RopaServlet extends HttpServlet {
         IService<Ropa> ropaIService = new RopaService(conexion);
         List<Ropa> ropa = ropaIService.listar();
 
-        for (int i = 0; i < ropa.size(); i++) {
+        /**
+         * for (int i = 0; i < ropa.size(); i++) {
+         *
+         *             resp.getWriter().println("<h1>"+ ropa.get(i).getIdRopa()+" -> " +
+         *                     ropa.get(i).getTotalPagar()+" -> "+ ropa.get(i).getPesoTotal()+"</h1>");
+         *
+         *         }
+         */
 
-            resp.getWriter().println("<h1>"+ ropa.get(i).getIdRopa()+" -> " +
-                    ropa.get(i).getTotalPagar()+" -> "+ ropa.get(i).getPesoTotal()+"</h1>");
-
-        }
+        req.setAttribute("ropa", ropa);
+        getServletContext().getRequestDispatcher("/listaRopa.jsp").forward(req,resp);
 
     }
 }

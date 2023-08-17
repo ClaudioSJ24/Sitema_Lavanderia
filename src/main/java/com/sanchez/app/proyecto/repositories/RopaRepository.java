@@ -44,13 +44,24 @@ public class RopaRepository implements IRepository<Ropa> {
 
     private Ropa getRopa(ResultSet resultSet) throws SQLException{
 
+        /**
+         * ID_ROPA              NUMBER NOT NULL,
+         *     PANTALONES           NUMBER,
+         *     CAMISAS              NUMBER,
+         *     VESTIDOS             NUMBER,
+         *     PLAYERAS             NUMBER,
+         *     FALDAS               NUMBER,
+         *     PESO_TOTAL           FLOAT,
+         *     TOTAL_PAGAR          FLOAT,
+         */
+
         Ropa r = new Ropa();
         r.setIdRopa(resultSet.getLong("ID_ROPA"));
         r.setPantalones(resultSet.getInt("PANTALONES"));
-        r.setPantalones(resultSet.getInt("CAMISAS"));
-        r.setPantalones(resultSet.getInt("VESTIDOS"));
-        r.setPantalones(resultSet.getInt("PLAYERAS"));
-        r.setPantalones(resultSet.getInt("FALDAS"));
+        r.setCamisas(resultSet.getInt("CAMISAS"));
+        r.setVestidos(resultSet.getInt("VESTIDOS"));
+        r.setPlayeras(resultSet.getInt("PLAYERAS"));
+        r.setFaldas(resultSet.getInt("FALDAS"));
         r.setPesoTotal(resultSet.getFloat("PESO_TOTAL"));
         r.setTotalPagar(resultSet.getFloat("TOTAL_PAGAR"));
 
@@ -65,7 +76,7 @@ public class RopaRepository implements IRepository<Ropa> {
         Ropa ropa = null;
 
         try (PreparedStatement preparedStatement = conexion
-                .prepareStatement("SELECT * FROM ropac Where ID_ROPA = ?")){
+                .prepareStatement("SELECT * FROM ropac Where ID_ROPA=?")){
 
             preparedStatement.setLong(1, id);
 
@@ -96,7 +107,7 @@ public class RopaRepository implements IRepository<Ropa> {
 
         }else {
 
-            query = "insert into ropac (id_ropa, pantalones, camisas, vestidos " +
+            query = "insert into ropac (id_ropa, pantalones, camisas, vestidos, " +
                     "playeras, faldas, peso_total, total_pagar) " +
                     "values(SEQUENCEROPA.NEXTVAL,?,?,?,?,?,?,?)";
 
