@@ -46,9 +46,9 @@ public class RopaEditarServlet extends HttpServlet {
                         "NO EXISTE LA ROPA EN LA BASE DE DATOS");
             }
         } else {
+
             resp.sendError(HttpServletResponse.SC_NOT_FOUND,
                     "EL ID ES NULO EN LA URL");
-
         }
 
     }

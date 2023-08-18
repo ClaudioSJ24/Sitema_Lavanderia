@@ -1,10 +1,14 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <%@page import="java.util.*" %>
+<%@page import="com.sanchez.app.proyecto.models.*" %>
 
 <%
 
     //
     Map<String, String> errores = (Map<String, String>) request.getAttribute("errores"); //null
+     Trabajador trabajador = (Trabajador) request.getAttribute("trabajador");
+
+
 
 %>
 
@@ -97,7 +101,7 @@
 
             <div class="col-12">
 
-                <h2>Alta de Ropa</h2>
+                <h2>Editar Trabajador</h2>
 
             </div>
 
@@ -117,17 +121,17 @@
 
         <div class="row">
 
-            <form action="<%=request.getContextPath()%>/ropa/alta" method="post">
+            <form action="<%=request.getContextPath()%>/trabajadores/alta" method="post">
 
                 <div class="col-md-12">
 
                     <div class="form-group">
 
-                        <label for="">Pantalones</label>
-                        <input type="text" name="pantalones" id="pantalones" class="form-control" value="${param.pantalones}">
+                        <label for="">Direccion Id</label>
+                        <input type="text" name="direccionId" id="direccionId" class="form-control" value="<%=trabajador.getDireccionId() != null? trabajador.getDireccionId(): ""%>">
                         <%
-                            if(errores != null && errores.containsKey("pantalones")){
-                                out.println("<span class='text-danger'>"+ errores.get("pantalones") + "</span>");
+                            if(errores != null && errores.containsKey("direccionId")){
+                                out.println("<span class='text-danger'>"+ errores.get("direccionId") + "</span>");
                             }
                         %>
 
@@ -135,11 +139,11 @@
 
                     <div class="form-group">
 
-                        <label for="">Camisas</label>
-                        <input type="text" name="camisas" id="camisas" class="form-control" value="${param.camisas}">
+                        <label for="">Nombre</label>
+                        <input type="text" name="nombre" id="nombre" class="form-control" value="<%=trabajador.getNombre() != null? trabajador.getNombre(): ""%>">
                         <%
-                            if(errores != null && errores.containsKey("camisas")){
-                                out.println("<span class='text-danger'>"+ errores.get("camisas") + "</span>");
+                            if(errores != null && errores.containsKey("nombre")){
+                                out.println("<span class='text-danger'>"+ errores.get("nombre") + "</span>");
                             }
                         %>
 
@@ -147,11 +151,11 @@
 
                     <div class="form-group">
 
-                        <label for="">Vestidos</label>
-                        <input type="text" name="vestidos" id="vestidos" class="form-control" value="${param.vestidos}">
+                        <label for="">Apellido P</label>
+                        <input type="text" name="apellidoP" id="apellidoP" class="form-control" value="<%=trabajador.getApellidoP() != null? trabajador.getApellidoP(): ""%>">
                         <%
-                            if(errores != null && errores.containsKey("vestidos")){
-                                out.println("<span class='text-danger'>"+ errores.get("vestidos") + "</span>");
+                            if(errores != null && errores.containsKey("apellidoP")){
+                                out.println("<span class='text-danger'>"+ errores.get("apellidoP") + "</span>");
                             }
                         %>
 
@@ -159,11 +163,11 @@
 
                     <div class="form-group">
 
-                        <label for="">Playeras</label>
-                        <input type="text" name="playeras" id="playeras" class="form-control" value="${param.playeras}">
+                        <label for="">Apellido M</label>
+                        <input type="text" name="apellidoM" id="apellidoM" class="form-control" value="<%=trabajador.getApellidoM() != null? trabajador.getApellidoM(): ""%>">
                         <%
-                            if(errores != null && errores.containsKey("playeras")){
-                                out.println("<span class='text-danger'>"+ errores.get("playeras") + "</span>");
+                            if(errores != null && errores.containsKey("apellidoM")){
+                                out.println("<span class='text-danger'>"+ errores.get("apellidoM") + "</span>");
                             }
                         %>
 
@@ -171,11 +175,11 @@
 
                     <div class="form-group">
 
-                        <label for="">Faldas</label>
-                        <input type="text" name="faldas" id="faldas" class="form-control" value="${param.faldas}">
+                        <label for="">Telefono</label>
+                        <input type="text" name="telefono" id="telefono" class="form-control" value="<%=trabajador.getTelefono() != null? trabajador.getTelefono(): ""%>">
                         <%
-                            if(errores != null && errores.containsKey("faldas")){
-                                out.println("<span class='text-danger'>"+ errores.get("faldas") + "</span>");
+                            if(errores != null && errores.containsKey("telefono")){
+                                out.println("<span class='text-danger'>"+ errores.get("telefono") + "</span>");
                             }
                         %>
 
@@ -183,27 +187,18 @@
 
                     <div class="form-group">
 
-                        <label for="">Peso Total</label>
-                        <input type="text" name="pesoTotal" id="pesoTotal" class="form-control" value="${param.pesoTotal}">
+                        <label for="">Sueldo</label>
+                        <input type="text" name="sueldo" id="sueldo" class="form-control" value="<%=trabajador.getSueldo() != null? trabajador.getSueldo(): ""%>">
                         <%
-                            if(errores != null && errores.containsKey("pesoTotal")){
-                                out.println("<span class='text-danger'>"+ errores.get("pesoTotal") + "</span>");
+                            if(errores != null && errores.containsKey("sueldo")){
+                                out.println("<span class='text-danger'>"+ errores.get("sueldo") + "</span>");
                             }
                         %>
 
                     </div>
 
-                    <div class="form-group">
 
-                        <label for="">Total Pagar</label>
-                        <input type="text" name="totalPagar" id="totalPagar" class="form-control" value="${param.totalPagar}">
-                        <%
-                            if(errores != null && errores.containsKey("totalPagar")){
-                                out.println("<span class='text-danger'>"+ errores.get("totalPagar") + "</span>");
-                            }
-                        %>
 
-                    </div>
 
                      <div class="form-group">
 

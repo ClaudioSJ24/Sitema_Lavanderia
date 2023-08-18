@@ -77,6 +77,10 @@ public class TrabajadoresService implements ITrabajadoresService {
 
     @Override
     public Long guardarReturnId(Trabajador trabajador) throws SQLException {
-        return null;
+        try {
+            return iTrabajadoresRepository.guardarReturnId(trabajador);
+        }catch (SQLException e){
+            throw new RuntimeException(e.getMessage(), e.getCause());
+        }
     }
 }
