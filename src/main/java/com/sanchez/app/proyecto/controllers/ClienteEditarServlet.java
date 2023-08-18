@@ -23,7 +23,7 @@ public class ClienteEditarServlet  extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Connection conexion = (Connection) req.getAttribute("conexion");
-        IService<Cliente> clienteService = new ClientesService(conexion);
+        ClientesService clienteService = new ClientesService(conexion);
         long id;
 
         try {
@@ -58,7 +58,7 @@ public class ClienteEditarServlet  extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         Connection conexion = (Connection) req.getAttribute("conexion");
-        IService<Cliente> clienteService = new ClientesService(conexion);
+        ClientesService clienteService = new ClientesService(conexion);
 
 
         Integer ropaId = Integer.valueOf(req.getParameter("ropaId"));
@@ -87,19 +87,21 @@ public class ClienteEditarServlet  extends HttpServlet {
 
         long id;
         id = Long.parseLong(req.getParameter("id"));
-        Cliente c = new Cliente();
-        c.setIdCliente(id);
-        c.setRopaId(ropaId.longValue());
-        c.setNombre(nombre);
-        c.setTelefono(telefono);
+        Cliente cliente = new Cliente();
+        cliente.setIdCliente(id);
+        cliente.setRopaId(ropaId.longValue());
+        cliente.setNombre(nombre);
+        cliente.setTelefono(telefono);
+
 
         if (errores.isEmpty()) {
 
-            clienteService.guardar(c);
+
+            clienteService.guardar(cliente);
             resp.sendRedirect(req.getContextPath()+"/clientes/listar");
 
         }else{
-
+            req.setAttribute("cliente", cliente);
             req.setAttribute("errores",errores);
             getServletContext().getRequestDispatcher("/editarCliente.jsp").forward(req, resp);
 

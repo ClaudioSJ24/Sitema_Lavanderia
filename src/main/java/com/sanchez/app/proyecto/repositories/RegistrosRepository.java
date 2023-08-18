@@ -31,10 +31,10 @@ public class RegistrosRepository implements IRegistrosRepository {
          */
 
         long resultado = -1L;
-        sql = "insert into registrosl (ID_REGISTRO, CLIENTE_ID, fecha_recibido, fecha_entrega, " +
-                    "values (SEQUENCEREGISTRO.NEXTVAL,?,?,?)";
+        sql = "insert into registrosl (TRABAJADOR_ID, CLIENTE_ID, fecha_recibido, fecha_entrega, " +
+                    " values (SEQUENCEREGISTRO.NEXTVAL,?,?,?,?)";
 
-        try (PreparedStatement stmt = conexion.prepareStatement(sql, new String[]{"ID_DIRECCION"})) {
+        try (PreparedStatement stmt = conexion.prepareStatement(sql, new String[]{"ID_REGISTRO"})) {
 
             if (registro.getIdRegistro() != null && registro.getIdRegistro() > 0) {
 
@@ -137,8 +137,7 @@ public class RegistrosRepository implements IRegistrosRepository {
 
         }else {
 
-            query = "insert into registrosl (ID_REGISTRO, cliente_id, id_trabajador, fecha_recibido, fecha_entrega" +
-                    "values(SEQUENCEREGISTRO.NEXTVAL,?,?,?,?)";
+            query = "insert into registrosl (id_registro, cliente_id,trabajador_id, fecha_recibido, fecha_entrega) values(SEQUENCEREGISTRO.NEXTVAL,?,?,?,?)";
         }try(PreparedStatement preparedStatement = conexion.prepareStatement(query)) {
 
             if (registro.getIdRegistro() != null && registro.getIdRegistro()  > 0) {

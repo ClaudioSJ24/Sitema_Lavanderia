@@ -110,22 +110,24 @@ public class TrabajadorEditarServlet extends HttpServlet {
 
         long id;
         id = Long.parseLong("id");
-        Trabajador t = new Trabajador();
-        t.setIdTrabajador(id);
-        t.setDireccionId(direccionId.longValue());
-        t.setNombre(nombre);
-        t.setApellidoP(apellidoP);
-        t.setApellidoM(apellidoM);
-        t.setTelefono(telefono);
-        t.setSueldo(sueldo);
+        Trabajador trabajador = new Trabajador();
+        trabajador.setIdTrabajador(id);
+        trabajador.setDireccionId(direccionId.longValue());
+        trabajador.setNombre(nombre);
+        trabajador.setApellidoP(apellidoP);
+        trabajador.setApellidoM(apellidoM);
+        trabajador.setTelefono(telefono);
+        trabajador.setSueldo(sueldo);
+
 
         if (errores.isEmpty()) {
 
-            trabajadorIService.guardar(t);
+            trabajadorIService.guardar(trabajador);
             resp.sendRedirect(req.getContextPath()+"/trabajadores/listar");
 
         }else{
 
+            req.setAttribute("trabajador", trabajador);
             req.setAttribute("errores",errores);
             getServletContext().getRequestDispatcher("/editarTrabajador.jsp").forward(req, resp);
 

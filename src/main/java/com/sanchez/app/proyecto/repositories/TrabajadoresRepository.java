@@ -133,7 +133,7 @@ public class TrabajadoresRepository implements ITrabajadoresRepository {
         Long result = -1L;
 
 
-        query = "insert into trabajadoresl (ID_TRAJADOR, DIRECCION_ID, nombre, ap_paterno, ap_materno, telefono, sueldo)" +
+        query = "insert into trabajadoresl (ID_TRABAJADOR, DIRECCION_ID, nombre, ap_paterno, ap_materno, telefono, sueldo)" +
                 "values(SEQUENCETRABAJADOR.NEXTVAL,?,?,?,?,?,?)";
 
         try (PreparedStatement preparedStatement = conexion.prepareStatement(query, new String[]{"ID_TRABAJADOR"})) {

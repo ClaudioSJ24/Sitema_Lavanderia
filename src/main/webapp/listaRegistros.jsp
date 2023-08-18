@@ -1,0 +1,199 @@
+<%@page contentType="text/html" pageEncoding="UTF-8" %>
+<%@page import="java.util.*" %>
+<%@page import="com.sanchez.app.proyecto.models.*" %>
+
+<%
+
+    //Obtener lista de registros
+    List<Registro> registros = (List<Registro>) request.getAttribute("registros");
+
+%>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"
+             integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+             crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="//cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+<script src="//cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+</head>
+<body>
+
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header" id="div1">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                                    <a class="navbar-brand" href="#" id="enlace1">Lavanderia App</a>
+            </div>
+
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                            aria-haspopup="true" aria-expanded="false">ropa<span
+                                class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="<%=request.getContextPath()%>/ropa/listar">Lista ropa</a></li>
+                            <li><a href="<%=request.getContextPath()%>/ropa/alta">Alta Ropa</a></li>
+
+                        </ul>
+
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                            aria-haspopup="true" aria-expanded="false">Clientes<span
+                                class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="<%=request.getContextPath()%>/clientes/listar">Lista Clientes</a></li>
+                            <li><a href="<%=request.getContextPath()%>/clientes/alta">Alta Cliente</a></li>
+
+                        </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                            aria-haspopup="true" aria-expanded="false">Trabajadores<span
+                                class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="<%=request.getContextPath()%>/trabajadores/listar">Lista trabajadores</a></li>
+                            <li><a href="<%=request.getContextPath()%>/trabajadores/alta">Alta Trabajadores</a></li>
+
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                       <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                          aria-haspopup="true" aria-expanded="false">Registros<span
+                           class="caret"></span></a>
+                       <ul class="dropdown-menu">
+                            <li><a href="<%=request.getContextPath()%>/registros/listar"> Lista Registros</a></li>
+                            <li><a href="<%=request.getContextPath()%>/registros/alta">Alta Registro</a></li>
+
+                       </ul>
+                    </li>
+
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+      </nav>
+
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-6">
+
+                <h2>Listado de Registros</h2>
+
+            </div>
+
+            <div class="col-6">
+
+                <a href="<%=request.getContextPath()%>/registros/alta"  class="btn btn-success"> Alta Registro</a>
+
+            </div>
+
+        </div>
+
+        <div class="row">
+
+            <div class="col-12">
+
+                <div class="table-responsive">
+
+                    <table class="table table-bordered table-striped" id="tablaRegistros" width="100%" cellspacing="0">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>Id Registro</th>
+                                <th>Id Cliente</th>
+                                <th>Id Trabajador</th>
+                                <th>Fecha Recibido</th>
+                                <th>Fecha Entrega</th>
+
+                                <th></th>
+                                <th></th>
+                                <th></th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            <% for(Registro r: registros) {%>
+                                <tr>
+
+                                    <td> <%=r.getIdRegistro()%> </td>
+                                    <td> <%=r.getClienteId()%> </td>
+                                    <td> <%=r.getTrabajadorId()%> </td>
+                                    <td> <%=r.getFechaRecibido()%> </td>
+                                    <td> <%=r.getFechaEntrega()%> </td>
+
+                                    <td>
+
+                                        <a href="<%=request.getContextPath()%>/registros/detalle?id=<%=r.getIdRegistro()%>" class="btn btn-success">
+
+                                            Detalle
+
+                                        </a>
+
+                                    </td>
+
+                                    <td>
+
+                                        <a href="<%=request.getContextPath()%>/registros/editar?id=<%=r.getIdRegistro()%>" class="btn btn-primary">
+
+                                            Editar
+
+                                        </a>
+
+                                    </td>
+
+                                    <td>
+
+                                        <a href="<%=request.getContextPath()%>/registros/eliminar?id=<%=r.getIdRegistro()%>" class="btn btn-danger">
+
+                                            Eliminar
+
+                                        </a>
+
+                                    </td>
+                                </tr>
+
+                                <% } %>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+</body>
+</html>

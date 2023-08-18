@@ -24,14 +24,7 @@ public class RopaAltaServlet extends HttpServlet {
 
 
 
-        /**
-         * for (int i = 0; i < ropa.size(); i++) {
-         *
-         *             resp.getWriter().println("<h1>"+ ropa.get(i).getIdRopa()+" -> " +
-         *                     ropa.get(i).getTotalPagar()+" -> "+ ropa.get(i).getPesoTotal()+"</h1>");
-         *
-         *         }
-         */
+
 
         getServletContext().getRequestDispatcher("/altaRopa.jsp").forward(req,resp);
 

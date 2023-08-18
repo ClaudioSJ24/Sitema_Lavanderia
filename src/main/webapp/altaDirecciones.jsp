@@ -393,7 +393,7 @@ $(document).ready(function() {
                   var estado = $("#Estado").val();
                   var cp = $("#CP").val();
 
-                  var urlDestino = "/Gen8-Rutas/api/direcciones"
+                  var urlDestino = "/Gen8-Sanchez-Proyecto/api/direcciones"
 
                   $.ajax({
                       type: 'POST',

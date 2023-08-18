@@ -25,10 +25,18 @@ public class RegistrosServlet extends HttpServlet {
         IService<Registro> registroIService = new RegistrosService(conexion);
         List<Registro> registros = registroIService.listar();
 
-        for (int i = 0; i < registros.size(); i++) {
+        /**
+         * for (int i = 0; i < registros.size(); i++) {
+         *
+         *             resp.getWriter().println("<h1>"+registros.get(i).getClienteId()+"-->"+registros.get(i).getFechaEntrega()+"</h1>");
+         *
+         *         }
+         *
+         */
 
-            resp.getWriter().println("<h1>"+registros.get(i).getClienteId()+"-->"+registros.get(i).getFechaEntrega()+"</h1>");
+        req.setAttribute("registros", registros);
+        getServletContext().getRequestDispatcher("/listaRegistros.jsp").forward(req,resp);
 
-        }
+
     }
 }
